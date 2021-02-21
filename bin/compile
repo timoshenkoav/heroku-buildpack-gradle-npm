@@ -60,21 +60,21 @@ install_frontend_bins() {
   echo "engines.node (package.json):  ${node_engine:-unspecified}"
   echo "engines.npm (package.json):   ${npm_engine:-unspecified (use default)}"
 
-  node_dir=$CACHE_DIR/node
-  if [ ! -d $node_dir ]; then
-      mkdir -p $node_dir
-  fi
-  install_nodejs "$node_engine" "$node_dir"
-  PATH=$PATH:$node_dir/bin
+  #node_dir=$CACHE_DIR/node
+  #if [ ! -d $node_dir ]; then
+#      mkdir -p $node_dir
+#  fi
+  install_nodejs "$node_engine"
+  #PATH=$PATH:$node_dir/bin
   install_npm "$npm_engine"
-  export npm_run=$node_dir/bin/npm
+  #export npm_run=$node_dir/bin/npm
 }
 
 install_frontend_deps() {
   frontend_dir=$1
   cd $frontend_dir
   status  "Installing npm frontend dependencies"
-  $npm_run install
+  npm install
 }
 
 compile_frontend_assets() {
