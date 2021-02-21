@@ -81,9 +81,9 @@ compile_frontend_assets() {
   frontend_dir=$1
   cd $frontend_dir
   if [ -n "$FRONTEND_BUILD_COMMAND" ]; then
-      COMPILECMD="$npm_run --silent $NPM_TASK"
-  else
       COMPILECMD=$FRONTEND_BUILD_COMMAND
+  else
+      COMPILECMD="$npm_run --silent $NPM_TASK"      
   fi
 
   echo -n "Building prod frontend assets ... "
